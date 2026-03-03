@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Socials Calculator</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Clemontinent Grade Calculator</h1>
+        <div id="main_body">
+            <div id="navbar">
+                <button onclick="selectTab('calc_button', 'grade_calculator')" id="calc_button" class="selected_tab">Grade Calculator</button>
+                <button onclick="selectTab('req_button', 'grade_requirement')" id="req_button">Grade Requirement</button>
+            </div>
+            <div id="grade_calculator" class="main_section selected_tab">
+                <div id="calc_projects_section">
+                    <h2>Assignments</h2>
+                </div>
+                <div id="calc_results">
+                    <h4 id="calc_result_text">No results yet. Enter your grades and press the button to see your grade.</h4>
+                    <button onclick="calculateGradeWithInputs()" id="calculate_button">Calculate Grade</button>
+                </div>
+            </div>
+            <div id="grade_requirement" class="main_section"></div>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>
