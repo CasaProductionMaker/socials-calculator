@@ -66,19 +66,6 @@ function loadAssignments() {
         `;
 
         document.querySelector("#calc_projects_section").appendChild(calcElement);
-
-        const reqElement = document.createElement("div");
-        reqElement.classList.add("assignment");
-        reqElement.innerHTML = `
-            <h3>${value.text}</h3>
-            <div class="grade_input">
-                <label for="${key}_grade_input">Grade: </label>
-                <input type="number" id="${key}_grade_input" placeholder="__" onclick="this.select();">
-                <label for="${key}_grade_input">/${value.outof}</label>
-            </div>
-        `;
-
-        document.querySelector("#req_projects_section").appendChild(reqElement);
     });
 }
 
@@ -116,11 +103,11 @@ function calculateRequirementWithInputs() {
 
     Object.keys(assignments).forEach(key => {
         const value = assignments[key];
-        if (document.querySelector(`#${key}_grade_input`) == null) {
+        if (document.querySelector(`#${key}_input`) == null) {
             console.log("oh no..")
             return;
         }
-        const inputtedValue = document.querySelector(`#${key}_grade_input`).value;
+        const inputtedValue = document.querySelector(`#${key}_input`).value;
         
         if (value.type == "test") {
             tests.push((inputtedValue / value.outof) * 0.4);
