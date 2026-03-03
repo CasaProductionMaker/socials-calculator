@@ -226,7 +226,6 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     #main_body {
         flex-direction: column;
         flex: 1;
-        max-height: fit-content;
     }
 
     #main_interface {
