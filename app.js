@@ -16,21 +16,24 @@ let assignments = {
     }
 }
 
+let upcomingAssignment = {
+    type: "project", 
+    outof: 100
+};
+
 function calculateGrade(projects, tests) {
     let projectsGrade = 0;
     let testsGrade = 0;
 
     for (let i = 0; i < projects.length; i++) {
-        projectsGrade += projects[i];
+        projectsGrade += projects[i] * 0.6;
     }
     projectsGrade /= projects.length;
-    projectsGrade *= 0.6;
 
     for (let i = 0; i < tests.length; i++) {
-        testsGrade += tests[i];
+        testsGrade += tests[i] * 0.4;
     }
     testsGrade /= tests.length;
-    testsGrade *= 0.4;
 
     return testsGrade + projectsGrade;
 }
@@ -51,18 +54,31 @@ function selectTab(tab, tabContent) {
 function loadAssignments() {
     Object.keys(assignments).forEach(key => {
         const value = assignments[key];
-        const newElement = document.createElement("div");
-        newElement.classList.add("assignment");
-        newElement.innerHTML = `
+        const calcElement = document.createElement("div");
+        calcElement.classList.add("assignment");
+        calcElement.innerHTML = `
             <h3>${value.text}</h3>
             <div class="grade_input">
                 <label for="${key}_input">Grade: </label>
-                <input type="number" id="${key}_input" placeholder="__">
+                <input type="number" id="${key}_input" placeholder="__" onclick="this.select();">
                 <label for="${key}_input">/${value.outof}</label>
             </div>
         `;
 
-        document.querySelector("#calc_projects_section").appendChild(newElement);
+        document.querySelector("#calc_projects_section").appendChild(calcElement);
+
+        const reqElement = document.createElement("div");
+        reqElement.classList.add("assignment");
+        reqElement.innerHTML = `
+            <h3>${value.text}</h3>
+            <div class="grade_input">
+                <label for="${key}_grade_input">Grade: </label>
+                <input type="number" id="${key}_grade_input" placeholder="__" onclick="this.select();">
+                <label for="${key}_grade_input">/${value.outof}</label>
+            </div>
+        `;
+
+        document.querySelector("#req_projects_section").appendChild(reqElement);
     });
 }
 
@@ -74,7 +90,7 @@ function calculateGradeWithInputs() {
         const value = assignments[key];
         if (document.querySelector(`#${key}_input`) == null) {
             console.log("oh no..")
-            alert("You missed one or more inputs!")
+            return;
         }
         const inputtedValue = document.querySelector(`#${key}_input`).value;
         
@@ -86,6 +102,65 @@ function calculateGradeWithInputs() {
     });
 
     document.querySelector("#calc_result_text").innerText = `Your current grade in the class is ${decimalToPercent(calculateGrade(projects, tests))}%.`;
+}
+
+function calculateRequirementWithInputs() {
+    let tests = [];
+    let projects = [];
+    let testAmount = 0;
+    let projectAmount = 0;
+    let weightedTests = 0;
+    let weightedProjects = 0;
+
+    const wantedGrade = document.querySelector(`#wanted_grade_input`).value / upcomingAssignment.outof;
+
+    Object.keys(assignments).forEach(key => {
+        const value = assignments[key];
+        if (document.querySelector(`#${key}_grade_input`) == null) {
+            console.log("oh no..")
+            return;
+        }
+        const inputtedValue = document.querySelector(`#${key}_grade_input`).value;
+        
+        if (value.type == "test") {
+            tests.push((inputtedValue / value.outof) * 0.4);
+            weightedTests += (inputtedValue / value.outof) * 0.4;
+            testAmount++;
+        } else {
+            projects.push((inputtedValue / value.outof) * 0.6);
+            weightedProjects += (inputtedValue / value.outof) * 0.6;
+            projectAmount++;
+        }
+    });
+
+    weightedTests /= testAmount;
+    weightedProjects /= projectAmount;
+
+    /*
+    90, 90 tests
+    70, x projects
+    want 80 avg
+
+    weightedTests + ((0.7 + ... + x) / totalProj) * 0.6 = wantedGrade
+
+    (weightedProjects + .6x) / totalProj = wantedGrade - weightedTests
+
+    weightedProjects + .6x = (wantedGrade - weightedTests) * totalProj
+
+    .6x = ((wantedGrade - weightedTests) * totalProj) - weightedProjects
+
+    x = (((wantedGrade - weightedTests) * totalProj) - weightedProjects) / 0.6
+
+    */
+    let needed = 0;
+    if (upcomingAssignment.type == "project") {
+        let neededWeight = wantedGrade - weightedTests;
+        needed = ((neededWeight * (projectAmount + 1)) - weightedProjects) / 0.6;
+    } else {
+        let neededWeight = wantedGrade - weightedProjects;
+        needed = ((neededWeight * (testAmount + 1)) - weightedTests) / 0.6;
+    }
+    document.querySelector("#req_result_text").innerText = `To get your desired grade, you need at least ${decimalToPercent(needed)}% in the upcoming assignment.`;
 }
 
 loadAssignments();

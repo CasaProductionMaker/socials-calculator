@@ -106,12 +106,51 @@ button.selected_tab {
 
 #calc_results {
     flex: 1;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+#req_projects_section {
+    flex: 2;
+    padding: 0.3em;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 0.6em;
+    overflow-y: scroll;
+    scrollbar-color: #555 #0000;
+}
+
+#req_results {
+    flex: 1;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+#wanted_grade_box {
+    padding: 0.3em;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 0.6em;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#req_grade_results {
     padding: 0.3em;
     border: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 0.5em;
+    flex: 1;
 }
 
 .assignment {
@@ -132,6 +171,8 @@ button.selected_tab {
 
 .grade_input {
     width: fit-content;
+    color: #FFF;
+    text-align: center;
 }
 
 label {
@@ -158,6 +199,17 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 }
 
 #calculate_button {
+    border-radius: 1.5em;
+    border: 1px solid #666;
+    background-color: #444;
+    color: #FFF;
+    box-sizing: border-box;
+    transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    font-size: 1em;
+    padding: 0.3em;
+}
+
+#check_requirement_button {
     border-radius: 1.5em;
     border: 1px solid #666;
     background-color: #444;
