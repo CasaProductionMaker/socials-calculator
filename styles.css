@@ -73,6 +73,7 @@ button.selected_tab {
     display: flex;
     flex-direction: row;
     gap: 0.5em;
+    width: 100%;
 }
 
 #main_body {
