@@ -49,25 +49,40 @@ h4 {
     border: 1px solid #444;
     width: fit-content;
     border-radius: 1.3em;
+    position: relative;
+}
+
+#active_tab_highlight {
+    box-sizing: border-box;
+    content: "";
+    border: 1px solid #666;
+    background-color: #444;
+    position: absolute;
+    inset: 0;
+    height: calc(100% - 8px);
+    top: 4px;
+    left: 4px;
+    width: 7.1875em;
+    border-radius: 1.5em;
+    transition: left 300ms, width 300ms;
 }
 
 button {
-    border-radius: 1.5em;
     border: 1px solid #0000;
-    background-color: #333;
+    background-color: #0000;
     color: #FFF;
     box-sizing: border-box;
-    transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    z-index: 1;
 }
 
 button:hover {
     cursor: pointer;
 }
 
-button.selected_tab {
+/* button.selected_tab {
     border: 1px solid #666;
     background-color: #444;
-}
+} */
 
 #main_interface {
     display: flex;

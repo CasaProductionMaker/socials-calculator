@@ -49,6 +49,10 @@ function selectTab(tab, tabContent) {
     });
     document.querySelector("#" + tab).classList.add("selected_tab");
     document.querySelector("#" + tabContent).classList.add("selected_tab");
+
+    const highlight = document.getElementById("active_tab_highlight");
+    highlight.style.left = document.querySelector("#" + tab).offsetLeft + "px";
+    highlight.style.width = document.querySelector("#" + tab).offsetWidth + "px";
 }
 
 function loadAssignments() {
