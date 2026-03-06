@@ -231,8 +231,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 @media (max-width: 600px) {
     #main_body {
         flex-direction: column;
-        flex: 1;
-        max-height: fit-content;
+        height: 60vh;
     }
 
     #main_interface {
@@ -241,12 +240,11 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     }
     
     #calc_results {
-        flex: 0;
+        flex: 1;
     }
 
     #calc_projects_section {
-        height: fit-content;
         max-height: 30vh;
-        flex: auto;
+        flex: 1;
     }
 }
