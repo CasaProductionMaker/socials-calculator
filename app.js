@@ -155,3 +155,4 @@ function calculateRequirementWithInputs() {
 }
 
 loadAssignments();
+selectTab('calc_button', 'calc_results');

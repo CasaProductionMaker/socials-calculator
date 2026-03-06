@@ -62,7 +62,7 @@ h4 {
     height: calc(100% - 8px);
     top: 4px;
     left: 4px;
-    width: 7.1875em;
+    width: calc(100% - 8px);
     border-radius: 1.5em;
     transition: left 300ms, width 300ms;
 }
