@@ -229,10 +229,12 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 }
 
 @media (max-width: 600px) {
+    body {
+        align-items: top;
+    }
     #main_body {
         flex-direction: column;
-        height: 60vh;
-        min-height: fit-content:
+        height: fit-content;
     }
 
     #main_interface {
