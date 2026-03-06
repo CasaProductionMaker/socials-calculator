@@ -230,7 +230,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 
 @media (max-width: 600px) {
     body {
-        align-items: top;
+        justify-content: flex-start;
     }
     #main_body {
         flex-direction: column;
