@@ -103,7 +103,7 @@ function calculateGradeWithInputs() {
             potentialElement = `
                 <span class="participation_alert">
                     (i)
-                    <div class="participation_tooltip">Good participation in class could result in a higher grade.</div>
+                    <div class="participation_tooltip">Great participation in class could result in a higher grade.</div>
                 </span>
             `;
         }
