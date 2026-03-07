@@ -109,7 +109,7 @@ function calculateGradeWithInputs() {
         }
     }
 
-    document.querySelector("#calc_result_text").innerHTML = `Your current grade in the class is ${setGrade}${extraGradeInfo}%. ${potentialElement}`;
+    document.querySelector("#calc_result_text").innerHTML = `Your current grade class is ${setGrade}${extraGradeInfo}%. ${potentialElement}`;
 
     registerPopups();
 }
