@@ -103,7 +103,7 @@ function calculateGradeWithInputs() {
             potentialElement = `
                 <span class="participation_alert">
                     (i)
-                    <div class="participation_tooltip">Great participation in class could result in a higher grade.</div>
+                    <div class="participation_tooltip">Prosperous participation in class could result in a higher grade.</div>
                 </span>
             `;
         }
@@ -159,18 +159,18 @@ function calculateRequirementWithInputs() {
 
 function repositionTooltip(parentElement) {
     const tooltip = parentElement.querySelector(".participation_tooltip");
-    const rect = tooltip.getBoundingClientRect();
-    let offset = -50;
     let margin = 20; // in pixels
 
-    if (rect.left < margin) {
-        offset += (margin - rect.left) / rect.width * 100;
-    }
-    if (rect.right > window.innerWidth - margin) {
-        offset -= (rect.right - (window.innerWidth - margin)) / rect.width * 100;
-    }
-
     requestAnimationFrame(() => {
+        const rect = tooltip.getBoundingClientRect();
+        let offset = -50;
+
+        if (rect.left < margin) {
+            offset += (margin - rect.left) / rect.width * 100;
+        }
+        if (rect.right > window.innerWidth - margin) {
+            offset -= (rect.right - (window.innerWidth - margin)) / rect.width * 100;
+        }
         tooltip.style.transform = `translateX(${offset}%)`;
     });
 }
