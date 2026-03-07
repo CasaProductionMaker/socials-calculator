@@ -21,7 +21,7 @@ const upcomingAssignment = {
     outof: 100
 };
 
-const gradeBarriers = [86, 73, 50, 1]
+const gradeBarriers = [86, 73, 50]
 
 function calculateGrade(projects, tests) {
     let projectsGrade = 0;
