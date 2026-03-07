@@ -103,7 +103,7 @@ function calculateGradeWithInputs() {
             potentialElement = `
                 <span class="participation_alert">
                     (i)
-                    <div class="participation_tooltip">Prosperous participation in class could result in a higher grade.</div>
+                    <div class="participation_tooltip">Professional participation in class could result in a higher grade.</div>
                 </span>
             `;
         }
@@ -162,6 +162,7 @@ function repositionTooltip(parentElement) {
     let margin = 20; // in pixels
 
     requestAnimationFrame(() => {
+        tooltip.style.transform = "translateX(-50%)";
         const rect = tooltip.getBoundingClientRect();
         let offset = -50;
 
@@ -195,14 +196,17 @@ function registerPopups() {
         pop.addEventListener("mouseleave", () => {
             pop.classList.remove("active");
 
-            pop.querySelector(".participation_tooltip").style.transform = "translateX(-50%)";
+            repositionTooltip(pop);
+            // pop.querySelector(".participation_tooltip").style.transform = "translateX(-50%)";
         });
     });
 
     document.addEventListener("click", () => {
         document.querySelectorAll(".participation_alert.active").forEach(p => {
             p.classList.remove("active")
-            p.querySelector(".participation_tooltip").style.transform = "translateX(-50%)";
+
+            repositionTooltip(p);
+            // p.querySelector(".participation_tooltip").style.transform = "translateX(-50%)";
         });
     });
 }
