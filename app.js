@@ -170,7 +170,9 @@ function repositionTooltip(parentElement) {
         offset -= (rect.right - (window.innerWidth - margin)) / rect.width * 100;
     }
 
-    tooltip.style.transform = `translateX(${offset}%)`;
+    requestAnimationFrame(() => {
+        tooltip.style.transform = `translateX(${offset}%)`;
+    });
 }
 
 function registerPopups() {
