@@ -228,6 +228,34 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     padding: 0.3em;
 }
 
+.participation_alert {
+    font-family: monospace;
+    cursor: pointer;
+    position: relative;
+    color: #AAA;
+}
+
+.participation_alert .participation_tooltip {
+    display: none;
+}
+
+.participation_alert.active .participation_tooltip, .participation_alert:hover .participation_tooltip {
+    display: block;
+    position: absolute;
+    background-color: #000D;
+    backdrop-filter: blur(2px);
+    border: none;
+    border-radius: 0.3em;
+    z-index: 2;
+    padding: 0.5em;
+    width: 14em;
+
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 1.5em;
+}
+
+
 @media (max-width: 600px) {
     body {
         justify-content: flex-start;

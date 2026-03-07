@@ -16,10 +16,12 @@ let assignments = {
     }
 }
 
-let upcomingAssignment = {
+const upcomingAssignment = {
     type: "project", 
     outof: 100
 };
+
+const gradeBarriers = [86, 73, 50, 1]
 
 function calculateGrade(projects, tests) {
     let projectsGrade = 0;
@@ -92,7 +94,24 @@ function calculateGradeWithInputs() {
         }
     });
 
-    document.querySelector("#calc_result_text").innerText = `Your current grade in the class is ${decimalToPercent(calculateGrade(projects, tests))}%.`;
+    let extraGradeInfo = "";
+    const setGrade = decimalToPercent(calculateGrade(projects, tests));
+    let potentialElement = "";
+    for (let i = 0; i < gradeBarriers.length; i++) {
+        if (setGrade >= gradeBarriers[i] - 1 && setGrade < gradeBarriers[i]) {
+            extraInfo = `~${gradeBarriers[i]}`;
+            potentialElement = `
+                <span class="participation_alert">
+                    (i)
+                    <div class="participation_tooltip">Good participation in class could result in a higher grade.</div>
+                </span>
+            `;
+        }
+    }
+
+    document.querySelector("#calc_result_text").innerHTML = `Your current grade in the class is ${setGrade}${extraGradeInfo}%. ${potentialElement}`;
+
+    registerPopups();
 }
 
 function calculateRequirementWithInputs() {
@@ -127,22 +146,6 @@ function calculateRequirementWithInputs() {
     weightedTests /= testAmount;
     weightedProjects /= projectAmount;
 
-    /*
-    90, 90 tests
-    70, x projects
-    want 80 avg
-
-    weightedTests + ((0.7 + ... + x) / totalProj) * 0.6 = wantedGrade
-
-    (weightedProjects + .6x) / totalProj = wantedGrade - weightedTests
-
-    weightedProjects + .6x = (wantedGrade - weightedTests) * totalProj
-
-    .6x = ((wantedGrade - weightedTests) * totalProj) - weightedProjects
-
-    x = (((wantedGrade - weightedTests) * totalProj) - weightedProjects) / 0.6
-
-    */
     let needed = 0;
     if (upcomingAssignment.type == "project") {
         let neededWeight = wantedGrade - weightedTests;
@@ -152,6 +155,54 @@ function calculateRequirementWithInputs() {
         needed = ((neededWeight * (testAmount + 1)) - weightedTests) / 0.6;
     }
     document.querySelector("#req_result_text").innerText = `To get your desired grade, you need at least ${decimalToPercent(needed)}% in the upcoming assignment.`;
+}
+
+function repositionTooltip(parentElement) {
+    const tooltip = parentElement.querySelector(".participation_tooltip");
+    const rect = tooltip.getBoundingClientRect();
+    let offset = -50;
+    let margin = 20; // in pixels
+
+    if (rect.left < margin) {
+        offset += (margin - rect.left) / rect.width * 100;
+    }
+    if (rect.right > window.innerWidth - margin) {
+        offset -= (rect.right - (window.innerWidth - margin)) / rect.width * 100;
+    }
+
+    tooltip.style.transform = `translateX(${offset}%)`;
+}
+
+function registerPopups() {
+    const popups = document.querySelectorAll(".participation_alert");
+
+    popups.forEach(pop => {
+        pop.addEventListener("click", (e) => {
+            e.stopPropagation();
+            pop.classList.toggle("active");
+
+            repositionTooltip(pop);
+        });
+
+        pop.addEventListener("mouseenter", () => {
+            pop.classList.add("active");
+
+            repositionTooltip(pop);
+        });
+
+        pop.addEventListener("mouseleave", () => {
+            pop.classList.remove("active");
+
+            pop.querySelector(".participation_tooltip").style.transform = "translateX(-50%)";
+        });
+    });
+
+    document.addEventListener("click", () => {
+        document.querySelectorAll(".participation_alert.active").forEach(p => {
+            p.classList.remove("active")
+            p.querySelector(".participation_tooltip").style.transform = "translateX(-50%)";
+        });
+    });
 }
 
 loadAssignments();
