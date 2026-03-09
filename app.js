@@ -1,3 +1,5 @@
+// Made by CasaNuestra
+
 let assignments = {
     "jugement_ethique": {
         type: "project", 
@@ -18,7 +20,7 @@ let assignments = {
 
 const upcomingAssignment = {
     type: "project", 
-    outof: 100
+    outof: 32
 };
 
 const gradeBarriers = [86, 73, 50]
@@ -122,12 +124,12 @@ function calculateRequirementWithInputs() {
     let weightedTests = 0;
     let weightedProjects = 0;
 
-    const wantedGrade = document.querySelector(`#wanted_grade_input`).value / upcomingAssignment.outof;
+    const wantedGrade = document.querySelector(`#wanted_grade_input`).value / 100;
 
     Object.keys(assignments).forEach(key => {
         const value = assignments[key];
         if (document.querySelector(`#${key}_input`) == null) {
-            console.log("oh no..")
+            console.log("oh no.. something went horribly wrong")
             return;
         }
         const inputtedValue = document.querySelector(`#${key}_input`).value;
@@ -154,7 +156,12 @@ function calculateRequirementWithInputs() {
         let neededWeight = wantedGrade - weightedProjects;
         needed = ((neededWeight * (testAmount + 1)) - weightedTests) / 0.6;
     }
-    document.querySelector("#req_result_text").innerText = `To get your desired grade, you need at least ${decimalToPercent(needed)}% in the upcoming assignment.`;
+
+    let outoftext = "";
+    if (upcomingAssignment.outof > 0) {
+        outoftext = `(${Math.round(needed * upcomingAssignment.outof * 10) / 10}/${upcomingAssignment.outof})`;
+    }
+    document.querySelector("#req_result_text").innerText = `To get your desired grade, you need at least ${decimalToPercent(needed)}% ${outoftext} in the upcoming assignment.`;
 }
 
 function repositionTooltip(parentElement) {
