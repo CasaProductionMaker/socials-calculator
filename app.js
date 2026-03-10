@@ -159,7 +159,7 @@ function calculateRequirementWithInputs() {
 
     let outoftext = "";
     if (upcomingAssignment.outof > 0) {
-        outoftext = `(${Math.round(needed * upcomingAssignment.outof * 10) / 10}/${upcomingAssignment.outof})`;
+        outoftext = `(${Math.ceil(needed * upcomingAssignment.outof)}/${upcomingAssignment.outof})`;
     }
     document.querySelector("#req_result_text").innerText = `To get your desired grade, you need at least ${decimalToPercent(needed)}% ${outoftext} in the upcoming assignment.`;
 }
