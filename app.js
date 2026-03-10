@@ -101,7 +101,7 @@ function calculateGradeWithInputs() {
     let potentialElement = "";
     for (let i = 0; i < gradeBarriers.length; i++) {
         if (setGrade >= gradeBarriers[i] - 1 && setGrade < gradeBarriers[i]) {
-            extraInfo = `~${gradeBarriers[i]}`;
+            extraGradeInfo = `~${gradeBarriers[i]}`;
             potentialElement = `
                 <span class="participation_alert">
                     (i)
