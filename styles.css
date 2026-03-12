@@ -271,12 +271,12 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
         flex: 1;
     }
     
-    #calc_results {
-        flex: 1;
+    #calc_results, #req_results {
+        flex: 2;
     }
 
     #calc_projects_section {
-        max-height: 30vh;
-        flex: 1;
+        /*max-height: 30vh;*/
+        flex: 3;
     }
 }
