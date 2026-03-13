@@ -265,6 +265,13 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     bottom: 1.5em;
 }
 
+#copyright_info {
+    position: absolute;
+    left: 1em;
+    bottom: 1em;
+    color: #555;
+}
+
 
 @media (max-width: 600px) {
     body {
@@ -297,5 +304,10 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 
     h1 {
         margin-bottom: 0.3em;
+    }
+
+    #copyright_info {
+        position: unset;
+        margin-top: 0.5em;
     }
 }
