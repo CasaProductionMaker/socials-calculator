@@ -269,6 +269,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 @media (max-width: 600px) {
     body {
         justify-content: flex-start;
+        padding: 7.5%;
     }
     #main_body {
         flex-direction: column;
@@ -292,5 +293,9 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 
     #calc_result_text, #req_result_text {
         font-size: 0.9em;
+    }
+
+    h1 {
+        margin-bottom: 0.3em;
     }
 }
