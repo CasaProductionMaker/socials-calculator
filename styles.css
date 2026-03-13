@@ -50,6 +50,7 @@ h4 {
     width: fit-content;
     border-radius: 1.3em;
     position: relative;
+    box-shadow: 0 0 1em #000A;
 }
 
 #active_tab_highlight {
