@@ -142,6 +142,10 @@ button:hover {
     gap: 0.5em;
 }
 
+#calc_result_text, #req_result_text {
+    font-size: 1em;
+}
+
 #wanted_grade_box {
     padding: 0.3em;
     background-color: #333;
@@ -284,5 +288,9 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 
     #calc_projects_section {
         flex: 3;
+    }
+
+    #calc_result_text, #req_result_text {
+        font-size: 0.9em;
     }
 }
