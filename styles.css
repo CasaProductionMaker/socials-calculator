@@ -268,13 +268,14 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     }
     #main_body {
         flex-direction: column;
-        /* height: fit-content; */
         flex: 1;
+        min-height: 0;
     }
 
     #main_interface {
         flex-direction: column;
         flex: 1;
+        min-height: 0;
     }
     
     #calc_results, #req_results {
@@ -282,7 +283,6 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     }
 
     #calc_projects_section {
-        /*max-height: 30vh;*/
         flex: 3;
     }
 }
