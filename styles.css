@@ -87,7 +87,7 @@ button:hover {
 #main_interface {
     display: flex;
     flex-direction: row;
-    gap: 0.5em;
+    gap: 1em;
     width: 100%;
 }
 
@@ -95,15 +95,16 @@ button:hover {
     width: 100%;
     border: 1px solid #333;
     background-color: #222;
-    border-radius: 1em;
+    border-radius: 2em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0.5em;
+    padding: 1em;
     box-sizing: border-box;
-    gap: 0.5em;
+    gap: 1em;
     height: fit-content;
+    box-shadow: 0 0 1em #000A;
 }
 
 .results_section {
@@ -116,13 +117,14 @@ button:hover {
 
 #calc_projects_section {
     flex: 2;
-    padding: 0.3em;
+    padding: 1em;
     background-color: #333;
     border: 1px solid #444;
-    border-radius: 0.6em;
+    border-radius: 1.2em;
     overflow-y: auto;
     scrollbar-color: #555 #0000;
     box-sizing: border-box;
+    box-shadow: 0 0 1em #0009;
 }
 
 #calc_results {
@@ -144,11 +146,12 @@ button:hover {
     padding: 0.3em;
     background-color: #333;
     border: 1px solid #444;
-    border-radius: 0.6em;
+    border-radius: 1.2em;
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 0 1em #0009;
 }
 
 #req_grade_results {
@@ -167,14 +170,15 @@ button:hover {
     background-color: #444;
     color: #FFF;
     width: 100%;
-    padding: 0.3em;
+    padding: 0.5em;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0.3em;
-    margin-top: 0.5em;
+    gap: 0.5em;
+    margin-top: 0.7em;
+    box-shadow: 0 0 1em #0008;
 }
 
 .grade_input {
@@ -215,6 +219,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
     font-size: 1em;
     padding: 0.3em;
+    box-shadow: 0 0 1em #0009;
 }
 
 #check_requirement_button {
@@ -226,6 +231,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
     font-size: 1em;
     padding: 0.3em;
+    box-shadow: 0 0 1em #0009;
 }
 
 .participation_alert {
