@@ -74,9 +74,9 @@ function loadAssignments() {
         const calcElement = document.createElement("div");
         calcElement.classList.add("assignment");
         calcElement.innerHTML = `
-            <h3>${value.text}</h3>
+            <h3>${value.text} ${value.isReturned ? "" : "(Not Returned)"}</h3>
             <div class="grade_input">
-                <label for="${key}_input">Grade: </label>
+                <label for="${key}_input">Grade ${value.isReturned ? "" : " (Optional)"}: </label>
                 <input type="number" id="${key}_input" placeholder="__" onclick="this.select();">
                 <label for="${key}_input">/${value.outof}</label>
             </div>
