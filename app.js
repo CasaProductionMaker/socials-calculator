@@ -4,17 +4,20 @@ let assignments = {
     "jugement_ethique": {
         type: "project", 
         outof: 100, 
-        text: "Projet de jugement éthique"
+        text: "Projet de jugement éthique", 
+        isReturned: true
     }, 
     "causes_ww1": {
         type: "test", 
         outof: 11, 
-        text: "Test sur les cause de la première guerre mondiale"
+        text: "Test sur les cause de la première guerre mondiale", 
+        isReturned: true
     }, 
     "chaine_amitie": {
         type: "test", 
         outof: 13, 
-        text: "Test sur la chaîne d'amitié"
+        text: "Test sur la chaîne d'amitié", 
+        isReturned: true
     }
 }
 
@@ -22,6 +25,11 @@ const upcomingAssignment = {
     type: "project", 
     outof: 32
 };
+
+// const upcomingAssignment = {
+//     type: "test", 
+//     outof: 5000
+// };
 
 const gradeBarriers = [86, 73, 50]
 
@@ -88,6 +96,11 @@ function calculateGradeWithInputs() {
             return;
         }
         const inputtedValue = document.querySelector(`#${key}_input`).value;
+
+        if (inputtedValue == 0 && !value.isReturned) {
+            // Not required in calculations
+            return;
+        }
         
         if (value.type == "test") {
             tests.push(inputtedValue / value.outof);
