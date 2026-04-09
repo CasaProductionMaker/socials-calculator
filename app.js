@@ -18,18 +18,19 @@ let assignments = {
         outof: 13, 
         text: "Test sur la chaîne d'amitié", 
         isReturned: true
+    }, 
+    "redactions": {
+        type: "project", 
+        outof: 32, 
+        text: "Les 2 Rédactions", 
+        isReturned: false
     }
 }
 
 const upcomingAssignment = {
-    type: "project", 
-    outof: 32
+    type: "test", 
+    outof: 5000
 };
-
-// const upcomingAssignment = {
-//     type: "test", 
-//     outof: 5000
-// };
 
 const gradeBarriers = [86, 73, 50]
 
@@ -130,8 +131,6 @@ function calculateGradeWithInputs() {
 }
 
 function calculateRequirementWithInputs() {
-    let tests = [];
-    let projects = [];
     let testAmount = 0;
     let projectAmount = 0;
     let weightedTests = 0;
@@ -147,27 +146,34 @@ function calculateRequirementWithInputs() {
         }
         const inputtedValue = document.querySelector(`#${key}_input`).value;
         
+        if (inputtedValue == 0 && !value.isReturned) {
+            // Not required in calculations
+            return;
+        }
+        
         if (value.type == "test") {
-            tests.push((inputtedValue / value.outof) * 0.4);
             weightedTests += (inputtedValue / value.outof) * 0.4;
             testAmount++;
         } else {
-            projects.push((inputtedValue / value.outof) * 0.6);
             weightedProjects += (inputtedValue / value.outof) * 0.6;
             projectAmount++;
         }
     });
 
+    let totalWeightedTests = weightedTests;
+    let totalWeightedProjects = weightedProjects;
+    
     weightedTests /= testAmount;
     weightedProjects /= projectAmount;
 
     let needed = 0;
     if (upcomingAssignment.type == "project") {
         let neededWeight = wantedGrade - weightedTests;
-        needed = ((neededWeight * (projectAmount + 1)) - weightedProjects) / 0.6;
+        needed = ((neededWeight * (projectAmount + 1)) - totalWeightedProjects) / 0.6;
     } else {
         let neededWeight = wantedGrade - weightedProjects;
-        needed = ((neededWeight * (testAmount + 1)) - weightedTests) / 0.6;
+        console.log(testAmount)
+        needed = ((neededWeight * (testAmount + 1)) - totalWeightedTests) / 0.4;
     }
 
     let outoftext = "";
