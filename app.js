@@ -29,7 +29,7 @@ let assignments = {
 
 const upcomingAssignment = {
     type: "test", 
-    outof: 5000
+    outof: 100
 };
 
 const gradeBarriers = [86, 73, 50]
@@ -172,7 +172,6 @@ function calculateRequirementWithInputs() {
         needed = ((neededWeight * (projectAmount + 1)) - totalWeightedProjects) / 0.6;
     } else {
         let neededWeight = wantedGrade - weightedProjects;
-        console.log(testAmount)
         needed = ((neededWeight * (testAmount + 1)) - totalWeightedTests) / 0.4;
     }
 
