@@ -23,7 +23,7 @@ let assignments = {
         type: "project", 
         outof: 32, 
         text: "Les 2 Rédactions", 
-        isReturned: false
+        isReturned: true
     }
 }
 
