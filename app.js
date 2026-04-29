@@ -24,12 +24,24 @@ let assignments = {
         outof: 32, 
         text: "Les 2 Rédactions", 
         isReturned: true
+    }, 
+    "ww1_final": {
+        type: "test", 
+        outof: 65, 
+        text: "Test final de la PGM",
+        isReturned: false
+    }, 
+    "les_emeutes": {
+        type: "project",
+        outof: 20,
+        text: "Projet des émeutes dans l'histoire",
+        isReturned: false
     }
 }
 
 const upcomingAssignment = {
-    type: "test", 
-    outof: 100
+    type: "project", 
+    outof: 32
 };
 
 const gradeBarriers = [86, 73, 50]
