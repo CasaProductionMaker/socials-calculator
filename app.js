@@ -91,17 +91,22 @@ function loadAssignments() {
         const value = assignments[key];
         const calcElement = document.createElement("div");
         calcElement.classList.add("assignment");
+        let loadedVal = localStorage.getItem(key)
         calcElement.innerHTML = `
             <h3>${value.text} ${value.isReturned ? "" : "(Not Returned)"}</h3>
             <div class="grade_input">
                 <label for="${key}_input">Grade ${value.isReturned ? "" : " (Optional)"}: </label>
-                <input type="number" id="${key}_input" placeholder="__" onclick="this.select();">
+                <input type="number" id="${key}_input" placeholder="__" onclick="this.select();" onchange="updateStorage('${key}');" value="${loadedVal}">
                 <label for="${key}_input">/${value.outof}</label>
             </div>
         `;
 
         document.querySelector("#calc_projects_section").appendChild(calcElement);
     });
+}
+
+function updateStorage(key) {
+   localStorage.setItem(key, document.querySelector(`#${key}_input`)?.value);
 }
 
 function calculateGradeWithInputs() {
