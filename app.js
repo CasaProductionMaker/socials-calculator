@@ -25,12 +25,12 @@ let assignments = {
         text: "Les 2 Rédactions", 
         isReturned: true
     }, 
-    //"ww1_final": {
-        //type: "test", 
-        //outof: 65, 
-        //text: "Test final de la PGM",
-        //isReturned: false
-    //},
+    "ww1_final": {
+        type: "test", 
+        outof: 65, 
+        text: "Test final de la PGM",
+        isReturned: true
+    },
     "les_emeutes": {
         type: "project",
         outof: 20,
@@ -41,13 +41,13 @@ let assignments = {
         type: "project",
         outof: 32,
         text: "Affiche de la grève",
-        isReturned: false
+        isReturned: true
     }
 }
 
 const upcomingAssignment = {
     type: "test", 
-    outof: 65
+    outof: 50
 };
 
 const gradeBarriers = [86, 73, 50]
