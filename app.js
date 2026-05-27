@@ -42,11 +42,17 @@ let assignments = {
         outof: 32,
         text: "Affiche de la grève",
         isReturned: true
+    },
+    "test_economie": {
+        type: "test",
+        outof: 35,
+        text: "Test sur l'économie du Canada après la PGM",
+        isReturned: true
     }
 }
 
 const upcomingAssignment = {
-    type: "test", 
+    type: "project", 
     outof: 50
 };
 
