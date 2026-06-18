@@ -48,6 +48,12 @@ let assignments = {
         outof: 35,
         text: "Test sur l'économie du Canada après la PGM",
         isReturned: true
+    },
+    "projet_final": {
+        type: "project",
+        outof: 50,
+        text: "Projet Final du Carousel",
+        isReturned: true
     }
 }
 
